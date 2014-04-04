@@ -5,6 +5,7 @@ The code contains a test harness that provisions a new Web Site and Storage Acco
 
 To watch this demo in action see the [//build/ 2014 session's recording on Channel 9](http://channel9.msdn.com/Events/Build/2014/3-621). 
 
+## Setup ##
 To run this demo you'll need to set up an Azure Active Directory application, and edit the code in the file **MyPersonalConfiguration.cs** in the **WebSiteIntegrationTests** project. This code is below for your reference.
 
 	public class MyPersonalAzureTestConfiguration : ITestConfigurationBase
@@ -29,5 +30,9 @@ To run this demo you'll need to set up an Azure Active Directory application, an
 	        return "[YOUR ACTIVE DIRECTORY APPLICATION REDIRECT URL]";
 	    }
 	}
+
+The second (and final) step in the setup process is to change the path to the **SampleWebSite** project contained in this solution. This code is in the file **WebSiteTestsBase.cs** and is visible below for reference:
+
+	string webSitePath = @"YOUR-PATH-TO\SampleWebSite\";
 
 [This YouTube video](https://www.youtube.com/watch?v=hG6a8oyxynA&feature=youtu.be) contains a walk-through of the MAML Demo Project Template Visual Studio Extension, which also makes use of Azure Active Directory if you need guidance on how to set up an Azure Active Directory for use with the Microsoft Azure Management API. 

@@ -15,6 +15,8 @@ namespace WebSiteIntegrationTests
 {
     public class WebSiteTestBase : AzureTestBase<MyPersonalAzureTestConfiguration>, IDisposable
     {
+        string webSitePath = @"YOUR-PATH-TO\SampleWebSite\";
+
         public string WelcomeMessage { get; set; }
         public string Description { get; set; }
 
@@ -158,9 +160,5 @@ namespace WebSiteIntegrationTests
                 this.StorageManagementClient.StorageAccounts.Delete(this.RandomStorageAccountName);
             }
         }
-
-        #region path to site
-        string webSitePath = @"C:\Users\bradyg\Desktop\BuildDemoSource\Demo-02-Integration-Testing\SampleWebSite\";
-        #endregion
     }
 }

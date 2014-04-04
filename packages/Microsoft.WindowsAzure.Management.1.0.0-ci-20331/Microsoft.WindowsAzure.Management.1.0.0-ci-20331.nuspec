@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>Microsoft.WindowsAzure.Management</id>
+    <version>1.0.0-ci-20331</version>
+    <title>Microsoft Azure Infrastructure Management Library</title>
+    <authors>Microsoft</authors>
+    <owners>azure-sdk, Microsoft</owners>
+    <licenseUrl>http://aka.ms/windowsazureapache2</licenseUrl>
+    <projectUrl>https://github.com/WindowsAzure/azure-sdk-for-net</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides Microsoft Azure infrastructure and data center management operations, including the ability to create and manage affinity groups and manage basic subscription information.</description>
+    <summary>Provides Microsoft Azure infrastructure and data center management operations, including the ability to create and manage affinity groups and manage basic subscription information.</summary>
+    <releaseNotes>Adds basic subscription operations.</releaseNotes>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>Microsoft "Microsoft Azure" Azure cloud management "service management" REST HTTP client core common windowsazureofficial</tags>
+    <dependencies>
+      <dependency id="Microsoft.WindowsAzure.Common" version="1.0.0-ci-20331" />
+    </dependencies>
+    <references>
+      <group targetFramework=".NETPortable0.0-net45+sl50+wp80+win">
+        <reference file="Microsoft.WindowsAzure.Management.dll" />
+      </group>
+      <group targetFramework=".NETFramework4.0">
+        <reference file="Microsoft.WindowsAzure.Management.dll" />
+      </group>
+    </references>
+  </metadata>
+</package>

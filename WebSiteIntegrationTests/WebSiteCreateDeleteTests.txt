@@ -1,0 +1,75 @@
+﻿using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Management.Models;
+using Microsoft.WindowsAzure.Management.WebSites;
+using Microsoft.WindowsAzure.Management.WebSites.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace WebSiteIntegrationTests
+{
+    public class WebSiteCreateDeleteTests
+    {
+        public SubscriptionCloudCredentials Credentials { get; set; }
+        public MyPersonalAzureTestConfiguration Configuration { get; set; }
+        public WebSiteManagementClient WebSiteManagementClient { get; set; }
+        public string RandomWebSiteName { get; set; }
+        public WebSpacesListResponse.WebSpace WebSpace { get; set; }
+        public string LocationName { get; set; }
+
+        public WebSiteCreateDeleteTests()
+        {
+            this.LocationName = LocationNames.NorthCentralUS;
+
+            // -----------------------------------------------
+            // TODO: replace this with your own credential-creation logic
+            // -----------------------------------------------
+            this.Configuration = new MyPersonalAzureTestConfiguration();
+            this.Credentials = TokenCredentialHelper.CreateCredential(
+                this.Configuration.GetSubscriptionId(),
+                this.Configuration.GetClientId(),
+                this.Configuration.GetRedirectUrl(),
+                this.Configuration.GetTenantId()
+                );
+
+            // leave this code alone once you do your own auth
+            this.WebSiteManagementClient =
+                CloudContext.Clients.CreateWebSiteManagementClient(this.Credentials);
+
+            var webSpaces = this.WebSiteManagementClient.WebSpaces.List();
+            this.WebSpace = webSpaces.First(x => x.GeoRegion == this.LocationName);
+        }
+
+        [Fact]
+        public void CanCreateWebSite()
+        {
+            this.RandomWebSiteName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
+
+            var newSiteResult = this.WebSiteManagementClient.WebSites.Create(
+                this.WebSpace.Name,
+                new WebSiteCreateParameters
+                {
+                    Name = this.RandomWebSiteName,
+                    WebSpaceName = this.WebSpace.Name
+                });
+        }
+
+        [Fact]
+        public void CanDeleteWebSite()
+        {
+            var existingSiteToDelete = this.WebSiteManagementClient.WebSites.Get(this.WebSpace.Name,
+                this.RandomWebSiteName, 
+                new WebSiteGetParameters { });
+
+            if (existingSiteToDelete.WebSite != null)
+            {
+                this.WebSiteManagementClient.WebSites.Delete(this.WebSpace.Name,
+                    this.RandomWebSiteName, new WebSiteDeleteParameters { });
+            }
+        }
+    }
+}

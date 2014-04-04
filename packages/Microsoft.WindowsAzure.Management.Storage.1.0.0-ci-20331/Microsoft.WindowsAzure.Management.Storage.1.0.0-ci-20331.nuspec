@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>Microsoft.WindowsAzure.Management.Storage</id>
+    <version>1.0.0-ci-20331</version>
+    <title>Microsoft Azure Storage Management Library</title>
+    <authors>Microsoft</authors>
+    <owners>azure-sdk, Microsoft</owners>
+    <licenseUrl>http://aka.ms/windowsazureapache2</licenseUrl>
+    <projectUrl>https://github.com/WindowsAzure/azure-sdk-for-net</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides storage management operations for Microsoft Azure, including the ability to create, delete, and configure storage service accounts and credentials.</description>
+    <summary>Provides storage management operations for Microsoft Azure, including the ability to create, delete, and configure storage service accounts and credentials.</summary>
+    <releaseNotes>PREVIEW RELEASE</releaseNotes>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>Microsoft "Microsoft Azure" Azure cloud management "service management" REST HTTP client core common windowsazureofficial</tags>
+    <dependencies>
+      <dependency id="Microsoft.WindowsAzure.Common" version="1.0.0-ci-20331" />
+    </dependencies>
+    <references>
+      <group targetFramework=".NETPortable0.0-net45+sl50+wp80+win">
+        <reference file="Microsoft.WindowsAzure.Management.Storage.dll" />
+      </group>
+      <group targetFramework=".NETFramework4.0">
+        <reference file="Microsoft.WindowsAzure.Management.Storage.dll" />
+      </group>
+    </references>
+  </metadata>
+</package>
